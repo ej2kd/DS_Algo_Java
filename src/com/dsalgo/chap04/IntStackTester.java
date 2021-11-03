@@ -9,7 +9,7 @@ public class IntStackTester {
 
         while (true) {
             System.out.printf("現在のデータ数：%d / %d\n", s.size(), s.getCapacity());
-            System.out.print("(1)プッシュ (2)ポップ (3)ピーク (4)ダンプ (0)終了：");
+            System.out.print("(1)プッシュ (2)ポップ (3)ピーク (4)ダンプ (5)クリア (6)探索 (0)終了：");
 
             int menu = stdIn.nextInt();
             if (menu == 0) break;
@@ -43,6 +43,21 @@ public class IntStackTester {
                     break;
                 case 4:
                     s.dump();
+                    break;
+                case 5:
+                    s.clear();
+                    System.out.println("スタックの中身を消去しました。");
+                    break;
+                case 6:
+                    System.out.print("探索する値を入力: ");
+                    x = stdIn.nextInt();
+                    int result = s.indexOf(x);
+                    if (result >= 0) {
+                        System.out.printf("%dは%dにあります。", x, result);
+                    } else {
+                        System.out.printf("%dは見つかりませんでした。", x);
+                    }
+                    System.out.println();
                     break;
             }
         }

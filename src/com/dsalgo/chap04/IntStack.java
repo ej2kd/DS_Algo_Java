@@ -27,7 +27,7 @@ public class IntStack {
 
 //    スタックにxをプッシュする
     public int push(int x) throws OverflowIntStackException {
-        if (ptr >= capacity) { // スタックが満杯である時
+        if (isFull()) { // スタックが満杯である時
             throw new OverflowIntStackException();
         }
         return stk[ptr++] = x; // 先にスタックにデータを格納してから、ポインタ値をインクリメントする
@@ -35,7 +35,7 @@ public class IntStack {
 
 //    スタックからデータをポップする
     public int pop() throws EmptyIntStackException {
-        if (ptr <= 0) { // スタックが空である時
+        if (isEmpty()) { // スタックが空である時
             throw new EmptyIntStackException();
         }
         return stk[--ptr]; // 先にポインタ値をデクリメントしてから、スタックのデータを取り出す
@@ -43,7 +43,7 @@ public class IntStack {
 
 //    スタックからデータをピークする（参照するだけ）
     public int peek() throws EmptyIntStackException {
-        if (ptr <= 0) { // スタックが空である時
+        if (isEmpty()) { // スタックが空である時
             throw new EmptyIntStackException();
         }
         return stk[ptr - 1];
@@ -81,7 +81,7 @@ public class IntStack {
     }
 
     public void dump() {
-        if (ptr <= 0) {
+        if (isEmpty()) {
             System.out.println("スタックは空です。");
         } else {
             for (int i = 0; i < ptr; i++) {
